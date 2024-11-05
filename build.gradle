@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.1.0.RELEASE'
+		springBootVersion = '3.3.5'
 	}
 	repositories {
 		mavenCentral()
@@ -9,6 +9,13 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.springframework.boot:spring-boot-starter-data-mongodb:3.3.5")
+		classpath("org.springframework.boot:spring-boot-starter-thymeleaf:3.3.5")
+		classpath("org.springframework.boot:spring-boot-starter-web:3.3.5")
+		classpath("org.springframework.boot:spring-boot-devtools:3.3.5")
+		classpath("org.webjars:bootstrap:5.3.3")
+		classpath("org.springframework.boot:spring-boot-starter-test:3.3.5")
+
 	}
 }
 
@@ -29,19 +36,17 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	runtime('org.springframework.boot:spring-boot-devtools')
-	compile 'org.webjars:bootstrap:3.3.7-1'
+
+	//classpath("org.springframework.boot:spring-boot-starter-test")
 	compileOnly('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	//testCompile('org.springframework.boot:spring-boot-starter-test')
+//	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '3.3.5'
 }
 
 //export test coverage
 jacocoTestReport {
     reports {
-        xml.enabled true
-        html.enabled false
+        xml.required.set(true)
+        html.required.set(false)
     }
 }
